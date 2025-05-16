@@ -8,3 +8,7 @@ Pada tutorial ini, AMQP digunakan untuk membuat sistem message queue yang memung
 
 ## What does it mean? guest:guest@localhost:5672 , what is the first guest, and what is the second guest, and what is localhost:5672 is for?
 `guest` pertama pada `guest:guest` adalah username, sedangkan yang kedua adalah password. `localhost` adalah alamat host dari AMQP broker (server RabbitMQ). `:5672` adalah port di mana AMQP broker sedang listening. `guest:guest@localhost:5672` secara keseluruhan adalah URL yang menyambungkan ke server AMQP.
+
+## Simulation Slow Subscriber
+![Slow Subscriber](image.png)
+Gambar di atas adalah message broker ketika diberi delay 2 detik untuk setiap proses. Karena untuk suatu proses dijalankan harus menunggu proses sebelumnya selesai, terdapat banyak queue atau antrian. Banyak message yang dikirimkan oleh publisher yang tidak dapat secara langsung diproses oleh subscriber yang menerika pesan-pesan tersebut. Saya menjalankan `cargo run` pada publisher sebanyak 4 kali dan terdapat 18 message pada queue.
